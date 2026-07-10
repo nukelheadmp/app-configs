@@ -1,0 +1,7 @@
+passbolt:
+  plugin: "passbolt.passbolt_lookup.passbolt_lookup"
+  account_kit:
+  passphrase: ""
+ansible_user: "{{ lookup(passbolt.plugin, passbolt_uuid).username }}"
+ansible_password: "{{ lookup(passbolt.plugin, passbolt_uuid).password }}"
+ansible_become_password: "{{ lookup(passbolt.plugin, passbolt_uuid).password }}"
