@@ -34,6 +34,13 @@ ansible-galaxy collection install ./passbolt --force
 
 echo "Copy Ansible/Passbolt config file"
 mkdir -p $ANSIBLE_VAULTS
-cp vault_passbolt.yml $ANSIBLE_VAULTS/vault_passbolt.yml
+cp $PROJECTSDIR/installation-scripts/ansible/vault_passbolt.yml $ANSIBLE_VAULTS/vault_passbolt.yml
+
+if [[ ! -d $HOME/.bashrc.d ]]; then
+  mkdir -p $HOME/.bashrc.d
+fi
+
+cp $PROJECTSDIR/installation-scripts/ansible/bashrc.d/* $HOME/.bashrc.d
+source $HOME/.bashrc
 
 $EDITOR $ANSIBLE_VAULTS/vault_passbolt.yml
