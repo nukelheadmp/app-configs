@@ -9,6 +9,7 @@ if [[ -z ${PROJECTSDIR:-} ]]; then
   export PYENV_PATH=$HOME/.local/lib/python
   export ANSIBLE_VAULTS=$HOME/.ansible/vaults
   echo "Copying environment config file"
+  mkdir -p $HOME/.config/environment.d
   cp $PROJECTSDIR/installation-scripts/env/projects.sh $HOME/.config/environment.d/
 fi
 
