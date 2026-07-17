@@ -1,2 +1,6 @@
+ANSIBLE_VAULTS=$HOME/.ansible/vaults
 PROJECTSDIR=$HOME/Projects
 PYENV_PATH=$HOME/.local/lib/python
+
+SSL_CERT_FILE=/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+REQUESTS_CA_BUNDLE=/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
