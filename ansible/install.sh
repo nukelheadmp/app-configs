@@ -49,7 +49,7 @@ echo "Install Juniper Collection"
 ansible-galaxy collection install juniper.device
 
 echo "A reboot, or logging out and back in recommended."
-read -p "Reboot now? (y/n)" reboot_confirm
+read -p "Reboot now? [y/n]: " reboot_confirm
 if [[ -n $reboot_confirm && ($reboot_confirm == "y" || $reboot_confirm == "Y") ]]; then
   reboot
 fi
