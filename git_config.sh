@@ -9,8 +9,9 @@ if [[ -n "${user_name:-}" ]]; then
   echo "Name: $user_name"
   echo "Email: $user_email"
   read -p "Do you want to change settings? [y/n]: " force_change
+fi
 
-  if [[ -z "${user_name:-}" || -z "${user_email}" || ( $force_change == "y" || $force_change == "Y" ) ]]; then
+if [[ -z "${user_name:-}" || -z "${user_email}" || ($force_change == "y" || $force_change == "Y") ]]; then
   read -p "Enter your full name: " user_name
   read -p "Enter your email: " user_email
   git config --global user.name "$user_name"
@@ -20,4 +21,3 @@ fi
 git config --global pull.rebase false
 git config --global init.defaultBranch master
 git config --global push.autoSetupRemote true
-
