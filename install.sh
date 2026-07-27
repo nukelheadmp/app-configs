@@ -1,6 +1,10 @@
 #!/bin/bash
 
-echo "Install Ansible with Passbolt integration and custom functions"
+echo "Configure git"
+$HOME/.local/share/app-configs/git_config.sh
+
+echo "Install Flathub"
+$HOME/.local/share/app-configs/flathub.sh
 
 echo "Checking environment variables"
 if [[ -z ${ANSIBLE_VAULTS:-} ]]; then
@@ -11,15 +15,26 @@ fi
 
 echo "Install environment conf files"
 mkdir -p $HOME/.config/environment.d/
-cp $HOME/.local/share/app-configs/ansible/environment.d/* $HOME/.config/environment.d/
+cp $HOME/.local/share/app-configs/environment.d/* $HOME/.config/environment.d/
+
+echo "Install libraries"
+cp $HOME/.local/share/app-configs/lib/* $HOME/.local/lib
 
 echo "Add bash functions"
 if [[ ! -d $HOME/.bashrc.d ]]; then
   mkdir -p $HOME/.bashrc.d
 fi
 
-cp $HOME/.local/share/app-configs/ansible/bashrc.d/* $HOME/.bashrc.d/
+cp $HOME/.local/share/app-configs/bashrc.d/* $HOME/.bashrc.d/
 source $HOME/.bashrc
+
+echo "Set up ign python environment"
+python3 -m venv $PYENV_PATH/ign
+activate ign
+pip install image-go-nord
+deactivate
+
+echo "Install Ansible with Passbolt integration and custom functions"
 
 echo "Installing packages"
 sudo dnf install -y \
@@ -42,7 +57,7 @@ ansible-galaxy collection install ./passbolt --force
 
 echo "Copy Ansible/Passbolt config file"
 mkdir -p $ANSIBLE_VAULTS
-cp $HOME/.local/share/app-configs/ansible/vault_passbolt.yml $ANSIBLE_VAULTS/vault_passbolt.yml
+cp $HOME/.local/share/app-configs/vault_passbolt.yml $ANSIBLE_VAULTS/vault_passbolt.yml
 
 $EDITOR $ANSIBLE_VAULTS/vault_passbolt.yml
 

@@ -1,6 +1,7 @@
 _ansible-passbolt() {
   local localhost
   local directory
+  local prev_dir=$(pwd)
 
   if [[ "$1" == "local" ]]; then
     localhost=1
@@ -42,6 +43,9 @@ _ansible-passbolt() {
       --extra-vars @~/.ansible/vaults/vault_passbolt.yml \
       --ask-vault-pass
   fi
+
+  deactivate
+  cd $prev_dir
 }
 
 ansible-local() { _ansible-passbolt local "$@"; }
