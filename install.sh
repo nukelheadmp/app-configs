@@ -14,10 +14,11 @@ if [[ -z ${ANSIBLE_VAULTS:-} ]]; then
 fi
 
 echo "Install environment conf files"
-mkdir -p $HOME/.config/environment.d/
+mkdir -p $HOME/.config/environment.d
 cp $HOME/.local/share/app-configs/environment.d/* $HOME/.config/environment.d/
 
 echo "Install libraries"
+mkdir -p $HOME/.local/lib
 cp $HOME/.local/share/app-configs/lib/* $HOME/.local/lib
 
 echo "Add bash functions"
