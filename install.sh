@@ -54,6 +54,7 @@ elif [[ $ID == "almalinux" ]]; then
     sshpass
 else
   echo "Cound not determine OS.  Please install Ansible and sshpass manually."
+  echo -n 1 -s -r -p "Press any key to continue..."
 fi
 
 echo "Clone Passbolt plugin repo"
