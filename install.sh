@@ -56,11 +56,12 @@ pip install pywinrm ncclient jxmlease xmltodict
 echo "Install Passbolt plugin"
 ansible-galaxy collection install ./passbolt --force
 
-echo "Copy Ansible/Passbolt config file"
-mkdir -p $ANSIBLE_VAULTS
-cp $HOME/.local/share/app-configs/vault_passbolt.yml $ANSIBLE_VAULTS/vault_passbolt.yml
-
-$EDITOR $ANSIBLE_VAULTS/vault_passbolt.yml
+if [[ ! -f $ANSIBLE_VAULTS/vault_passbolt.yml ]]; then
+  echo "Copy Ansible/Passbolt config file"
+  mkdir -p $ANSIBLE_VAULTS
+  cp $HOME/.local/share/app-configs/vault_passbolt.yml $ANSIBLE_VAULTS/vault_passbolt.yml
+  $EDITOR $ANSIBLE_VAULTS/vault_passbolt.yml
+fi
 
 echo "Install Juniper Collection"
 ansible-galaxy collection install juniper.device
