@@ -29,6 +29,11 @@ fi
 cp $HOME/.local/share/app-configs/bashrc.d/* $HOME/.bashrc.d/
 source $HOME/.bashrc
 
+echo "Install Python and pip"
+sudo dnf install -y \
+  python3 \
+  python3-pip
+
 echo "Set up ign python environment"
 python3 -m venv $PYENV_PATH/ign
 activate ign
@@ -38,10 +43,18 @@ deactivate
 echo "Install Ansible with Passbolt integration and custom functions"
 
 echo "Installing packages"
-sudo dnf install -y \
-  ansible \
-  python3 \
-  sshpass
+source /etc/os-release
+if [[ $ID == "fedora" ]]; then
+  sudo dnf install -y \
+    ansible \
+    sshpass
+elif [[ $ID == "almalinux" ]]; then
+  sudo dnf install -y \
+    ansible-core \
+    sshpass
+else
+  echo "Cound not determine OS.  Please install Ansible and sshpass manually."
+fi
 
 echo "Clone Passbolt plugin repo"
 git clone https://github.com/passbolt/passbolt-ansible-lookup-plugin.git $HOME/.local/share/passbolt-ansible-lookup-plugin
