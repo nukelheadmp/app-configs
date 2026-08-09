@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source $HOME/.local/share/app-configs/fonts.sh
-
 echo "Configure git"
 $HOME/.local/share/app-configs/git_config.sh
 
