@@ -77,7 +77,8 @@ if [[ ! -f $ANSIBLE_VAULTS/vault_passbolt.yml ]]; then
   $EDITOR $ANSIBLE_VAULTS/vault_passbolt.yml
 fi
 
-echo "Install Juniper Collection"
+echo "Install Collections"
+ansible-galaxy collection install microsoft.ad --force
 ansible-galaxy collection install juniper.device
 
 echo "A reboot, or logging out and back in recommended."
