@@ -39,11 +39,23 @@ fi
 echo "Configure git"
 ${HOME}/.local/share/app-configs/config-git.sh
 
+echo "Checking environment variables"
+if [[ -z ${ANSIBLE_VAULTS:-} ]]; then
+  echo "Setting required variables"
+  export ANSIBLE_VAULTS=$HOME/.ansible/vaults
+  export PLAYBOOKPATH=/opt
+  export PYENV_PATH=$HOME/.local/lib/python
+fi
+
 echo "Configure environment variables and functions"
 ${HOME}/.local/share/app-configs/config-env.sh
 
 echo "Clone Ansible playbook repos"
 ${HOME}/.local/share/app-configs/clone_playbooks.sh
+
+echo "Install Neovim"
+cd /opt/ansible-servers/
+ansible-playbook -i localhost, -c local --ask-become-pass playbooks-local/install-neovim.yml
 
 echo "Clone Ansible Passbolt plugin repo"
 git clone https://github.com/passbolt/passbolt-ansible-lookup-plugin.git $HOME/.local/share/passbolt-ansible-lookup-plugin
