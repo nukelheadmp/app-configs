@@ -69,20 +69,24 @@ _ansible_passbolt_completions() {
 
     case "$command_name" in
     ansible-local)
-      base_dir="${PROJECTSDIR}/ansible-servers"
+      base_dir="${PLAYBOOKPATH}/ansible-servers"
       ;;
     ansible-servers)
-      base_dir="${PROJECTSDIR}/ansible-servers"
+      base_dir="${PLAYBOOKPATH}/ansible-servers"
       ;;
     ansible-network)
-      base_dir="${PROJECTSDIR}/ansible-network"
+      base_dir="${PLAYBOOKPATH}/ansible-network"
       ;;
     *)
       return 0
       ;;
     esac
 
-    playbook_dir="${base_dir}/playbooks"
+    if [[ $localhost == 1 ]]; then
+      playbook_dir="${base_dir}/playbooks-local"
+    else
+      playbook_dir="${base_dir}/playbooks"
+    fi
 
     if [[ -d "$playbook_dir" ]]; then
       # Suggest playbook names without .yml extension
