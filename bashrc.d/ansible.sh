@@ -18,9 +18,8 @@ _ansible-passbolt() {
     return 1
   fi
 
-  if [[ "$PWD" != "${PROJECTSDIR}/ansible-${directory}" ]]; then
-    echo -e " -> Moving to ansible directory..."
-    cd ${PROJECTSDIR}/ansible-${directory}
+  if [[ "$PWD" != "${PLAYBOOKPATH}/ansible-${directory}" ]]; then
+    cd ${PLAYBOOKPATH}/ansible-${directory}
   fi
 
   if [[ $localhost == 1 ]]; then
