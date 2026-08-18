@@ -2,6 +2,7 @@ _ansible-passbolt() {
   local localhost
   local directory
   local prev_dir=$(pwd)
+  local playbook
 
   if [[ "$1" == "local" ]]; then
     localhost=1
@@ -22,7 +23,11 @@ _ansible-passbolt() {
     cd ${PROJECTSDIR}/ansible-${directory}
   fi
 
-  local playbook="playbooks/${1}.yml"
+  if [[ $localhost == 1 ]]; then
+    playbook="playbooks-local/${1}.yml"
+  else
+    playbook="playbooks/${1}.yml"
+  fi
 
   if [[ ! -f "${playbook}" ]]; then
     echo -e "Error: Playbook not found: ${playbook}"
