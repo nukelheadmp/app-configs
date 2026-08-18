@@ -36,7 +36,7 @@ _ansible-passbolt() {
   if [[ $localhost == 1 ]]; then
     local machine=$(hostname -s)
     ansible-playbook "$playbook" "${@:2}" \
-      --limit ${machine} -c local \
+      -i localhost, -c local \
       --ask-become-pass
   else
     ansible-playbook "$playbook" "${@:2}" \
