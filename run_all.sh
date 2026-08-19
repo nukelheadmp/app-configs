@@ -17,7 +17,7 @@ elif [[ $ID == "almalinux" ]]; then
     python3-pip \
     sshpass
 else
-  echo "Cound not determine OS.  Please install Ansible and sshpass manually."
+  echo "Cound not determine OS.  The distribution might not be compatible with this script."
   echo -n 1 -s -r -p "Press any key to continue..."
 fi
 
@@ -33,6 +33,7 @@ check_result=${?}
 
 if [[ $check_result > 0 ]]; then
   echo "You must configure KeePass with SSH Agent and load your key."
+  echo "Configure your SSH Agent and run ~/.local/share/app-configs/run_all.sh again."
   exit 0
 fi
 
@@ -76,6 +77,10 @@ if [[ ! -f $ANSIBLE_VAULTS/vault_passbolt.yml ]]; then
   cp $HOME/.local/share/app-configs/files/vault_passbolt.yml $ANSIBLE_VAULTS/vault_passbolt.yml
   $EDITOR $ANSIBLE_VAULTS/vault_passbolt.yml
 fi
+
+echo "Configure Neovim"
+cd /opt/ansible-servers/
+ansible-playbook -i localhost, -c local --ask-become-pass playbooks-local/config-neovim.yml
 
 echo "Install Collections"
 ansible-galaxy collection install microsoft.ad --force
