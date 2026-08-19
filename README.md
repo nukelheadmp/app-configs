@@ -3,5 +3,6 @@
 ---
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/nukelheadmp/app-configs/master/boot.sh
+curl -fsSL \
+  https://raw.githubusercontent.com/nukelheadmp/app-configs/master/boot.sh | bash
 ```
