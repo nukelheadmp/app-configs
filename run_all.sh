@@ -75,7 +75,6 @@ if [[ ! -f $ANSIBLE_VAULTS/vault_passbolt.yml ]]; then
   echo "Copy Ansible/Passbolt config file"
   mkdir -p $ANSIBLE_VAULTS
   cp $HOME/.local/share/app-configs/files/vault_passbolt.yml $ANSIBLE_VAULTS/vault_passbolt.yml
-  $EDITOR $ANSIBLE_VAULTS/vault_passbolt.yml
 fi
 
 echo "Configure Neovim"
