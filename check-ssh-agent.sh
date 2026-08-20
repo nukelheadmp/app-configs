@@ -1,5 +1,9 @@
 #!/bin/bash
-# check-ssh-agent.sh — verify SSH agent is running and has identities loaded
+# TODO: clean this up...
+
+echo "Check SSH Agent"
+
+local agent_status
 set -euo pipefail
 
 has_agent() {
@@ -8,24 +12,28 @@ has_agent() {
 
 if ! has_agent; then
   echo "SSH agent is not running (SSH_AUTH_SOCK unset or not a socket)."
-  exit 2
-fi
-
-# ssh-add -l exit codes:
-#   0 = identities present
-#   1 = agent running, no identities
-#   2 = cannot connect to agent
-if ssh-add -l >/dev/null 2>&1; then
+  status=2
+elif ssh-add -l >/dev/null 2>&1; then
+  # ssh-add -l exit codes:
+  #   0 = identities present
+  #   1 = agent running, no identities
+  #   2 = cannot connect to agent
   echo "SSH agent is running and has keys:"
   ssh-add -l
-  exit 0
+  status=0
 else
   status=$?
   if [[ $status -eq 1 ]]; then
     echo "SSH agent is running but has no keys loaded."
-    exit 1
+    status=1
   else
     echo "Cannot talk to SSH agent (exit $status)."
-    exit 2
+    status=2
   fi
+fi
+
+if [[ $status > 0 ]]; then
+  echo "You must configure KeePass with SSH Agent and load your key."
+  echo "Configure your SSH Agent and run ~/.local/share/app-configs/run_all.sh again."
+  exit 0
 fi

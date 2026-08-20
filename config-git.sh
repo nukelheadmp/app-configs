@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Configure git"
 user_name=$(git config user.name 2>/dev/null)
 user_email=$(git config user.email 2>/dev/null)
 force_change="n"
