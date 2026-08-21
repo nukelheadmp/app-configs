@@ -1,8 +1,12 @@
 #!/bin/bash
 
-echo "Clone Ansible Passbolt plugin repo"
-git clone https://github.com/passbolt/passbolt-ansible-lookup-plugin.git ${HOME}/.local/share/passbolt-ansible-lookup-plugin
-cd ${HOME}/.local/share/passbolt-ansible-lookup-plugin
+if [[ ! -d ${HOME}/.local/share/passbolt-ansible-lookup-plugin/ ]]; then
+  echo "Clone Ansible Passbolt plugin repo"
+  git clone https://github.com/passbolt/passbolt-ansible-lookup-plugin.git ${HOME}/.local/share/passbolt-ansible-lookup-plugin
+  cd ${HOME}/.local/share/passbolt-ansible-lookup-plugin
+else
+  echo "Directory ${HOME}/.local/share/passbolt-ansible-lookup-plugin/ already exists."
+fi
 
 echo "Set up python environment"
 python3 -m venv ${HOME}/.local/lib/python/ansible
