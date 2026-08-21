@@ -10,7 +10,7 @@ fi
 
 echo "Set up python environment"
 python3 -m venv ${HOME}/.local/lib/python/ansible
-activate ansible
+source ${HOME}/.local/lib/python/ansible/bin/activate
 pip install -r passbolt/passbolt_lookup/requirements.txt
 pip install pywinrm ncclient jxmlease xmltodict
 
