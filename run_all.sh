@@ -11,6 +11,7 @@ source ${HOME}/.local/share/app-configs/check-ssh-agent.sh
 source ${HOME}/.local/share/app-configs/config-git.sh
 
 source ${HOME}/.local/share/app-configs/config-env.sh
+source ${HOME}/.bashrc
 
 source ${HOME}/.local/share/app-configs/clone_playbooks.sh
 
