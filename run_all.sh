@@ -1,24 +1,24 @@
 #!/bin/bash
 
-source ${HOME}/.local/share/app-configs/install-packages.sh
+${HOME}/.local/share/app-configs/install-packages.sh
 
-source ${HOME}/.local/share/app-configs/install-synology.sh
+${HOME}/.local/share/app-configs/install-synology.sh
 
-source ${HOME}/.local/share/app-configs/ca-trust.sh
+${HOME}/.local/share/app-configs/ca-trust.sh
 
-source ${HOME}/.local/share/app-configs/check-ssh-agent.sh
+${HOME}/.local/share/app-configs/check-ssh-agent.sh
 
-source ${HOME}/.local/share/app-configs/config-git.sh
+${HOME}/.local/share/app-configs/config-git.sh
 
-source ${HOME}/.local/share/app-configs/config-env.sh
+${HOME}/.local/share/app-configs/config-env.sh
 
-source ${HOME}/.local/share/app-configs/clone_playbooks.sh
+${HOME}/.local/share/app-configs/clone_playbooks.sh
 
-source ${HOME}/.local/share/app-configs/install-neovim.sh
+${HOME}/.local/share/app-configs/install-neovim.sh
 
-source ${HOME}/.local/share/app-configs/install-ansible_plugins.sh
+${HOME}/.local/share/app-configs/install-ansible_plugins.sh
 
-source ${HOME}/.local/share/app-configs/config-neovim.sh
+${HOME}/.local/share/app-configs/config-neovim.sh
 
 echo "A reboot, or logging out and back in recommended."
 read -p "Reboot now? [y/n]: " reboot_confirm
