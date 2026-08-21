@@ -1,5 +1,5 @@
 #!/bin/bash
 
 echo "Clone Ansible playbook repos"
-sudo git clone https://gitlab.priefert.com/infotech/ansible-network.git ${PLAYBOOKPATH}/ansible-network
-sudo git clone https://gitlab.priefert.com/infotech/ansible-servers.git ${PLAYBOOKPATH}/ansible-servers
+sudo git clone https://gitlab.priefert.com/infotech/ansible-network.git ${HOME}/Projects/ansible-network
+sudo git clone https://gitlab.priefert.com/infotech/ansible-servers.git ${HOME}/Projects/ansible-servers

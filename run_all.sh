@@ -1,13 +1,5 @@
 #!/bin/bash
 
-echo "Checking environment variables"
-if [[ -z ${ANSIBLE_VAULTS:-} ]]; then
-  echo "Setting required variables"
-  export ANSIBLE_VAULTS=${HOME}/.ansible/vaults
-  export PLAYBOOKPATH=${HOME}/Projects
-  export PYENV_PATH=${HOME}/.local/lib/python
-fi
-
 source ${HOME}/.local/share/app-configs/install-packages.sh
 
 source ${HOME}/.local/share/app-configs/install-synology.sh
