@@ -10,3 +10,4 @@ if [[ ! -d ${HOME}/.bashrc.d ]]; then
 fi
 
 cp ${HOME}/.local/share/app-configs/bashrc.d/* ${HOME}/.bashrc.d/
+source ${HOME}/.bashrc
