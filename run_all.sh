@@ -6,7 +6,7 @@ ${HOME}/.local/share/app-configs/install-synology.sh
 
 ${HOME}/.local/share/app-configs/ca-trust.sh
 
-${HOME}/.local/share/app-configs/check-ssh-agent.sh
+source ${HOME}/.local/share/app-configs/check-ssh-agent.sh
 
 ${HOME}/.local/share/app-configs/config-git.sh
 
