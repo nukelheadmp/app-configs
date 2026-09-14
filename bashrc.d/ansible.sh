@@ -44,7 +44,6 @@ _ansible-passbolt() {
       --ask-become-pass
   else
     ansible-playbook "$playbook" "${@:2}" \
-      -i inventories/production/ \
       --extra-vars @~/.ansible/vaults/vault_passbolt.yml \
       --ask-vault-pass
   fi
