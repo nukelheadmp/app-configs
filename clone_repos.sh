@@ -12,3 +12,9 @@ if [[ ! -d ${HOME}/Projects/ansible-servers/ ]]; then
 else
   echo "Directory ${HOME}/Projects/ansible-servers/ already exists."
 fi
+
+if [[ ! -d ${HOME}/Projects/switch_configs/ ]]; then
+  git clone git@gitlab.priefert.com:infotech/switch_configs.git ${HOME}/Projects/switch_configs
+else
+  echo "Directory ${HOME}/Projects/switch_configs/ already exists."
+fi

@@ -12,7 +12,7 @@ ${HOME}/.local/share/app-configs/config-git.sh
 
 ${HOME}/.local/share/app-configs/config-env.sh
 
-${HOME}/.local/share/app-configs/clone_playbooks.sh
+${HOME}/.local/share/app-configs/clone_repos.sh
 
 ${HOME}/.local/share/app-configs/run_playbooks.sh
 

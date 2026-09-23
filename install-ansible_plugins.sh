@@ -25,5 +25,6 @@ if [[ ! -f ${HOME}/.ansible/vaults/vault_passbolt.yml ]]; then
 fi
 
 echo "Install Collections"
+ansible-galaxy collection install community.network
 ansible-galaxy collection install microsoft.ad --force
 ansible-galaxy collection install juniper.device
