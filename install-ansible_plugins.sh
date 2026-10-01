@@ -13,7 +13,7 @@ echo "Set up python environment"
 python3 -m venv ${HOME}/.local/lib/python/ansible
 source ${HOME}/.local/lib/python/ansible/bin/activate
 pip install -r passbolt/passbolt_lookup/requirements.txt
-pip install pywinrm ncclient jxmlease xmltodict
+pip install pan-os-python pywinrm ncclient jxmlease xmltodict
 
 echo "Install Passbolt plugin"
 ansible-galaxy collection install ./passbolt --force
@@ -28,3 +28,4 @@ echo "Install Collections"
 ansible-galaxy collection install community.network
 ansible-galaxy collection install microsoft.ad --force
 ansible-galaxy collection install juniper.device
+ansible-galaxy collection install paloaltonetworks.panos
