@@ -1,5 +1,4 @@
 #!/bin/bash
 
-echo "Install Flathub and Synology Drive"
-sudo flatpak remote-add --system --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-sudo flatpak install --system --noninteractive -y flathub com.synology.SynologyDrive
+echo "Install Synology Drive"
+flatpak install --noninteractive -y flathub com.synology.SynologyDrive
