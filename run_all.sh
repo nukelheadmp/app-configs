@@ -14,13 +14,13 @@ ${HOME}/.local/share/app-configs/install-keepassxc.sh
 
 ${HOME}/.local/share/app-configs/install-ansible.sh
 
+source ${HOME}/.local/share/app-configs/check-ssh-agent.sh
+
 ${HOME}/.local/share/app-configs/clone_repos.sh
 
 ${HOME}/.local/share/app-configs/run_playbooks.sh
 
 ${HOME}/.local/share/app-configs/install-grokcli.sh
-
-source ${HOME}/.local/share/app-configs/check-ssh-agent.sh
 
 echo "A reboot, or logging out and back in recommended."
 read -p "Reboot now? [y/n]: " reboot_confirm
